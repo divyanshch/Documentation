@@ -35,15 +35,15 @@ Many other permission bits can be used with this function, but it all varies on 
 
 ##Examples
 
-`#include <sys/stat.h>`
+#include <sys/stat.h>
 
-`int main()`
-`{`
-	`const char *path;`
-	`*/Insert code here/*`
+int main()
+{
+	const char *path;`
+	*/Insert code here/*`
 
-	`chmod(path, S_IRUSR, S_IRGRP, S_IROTH);`
-`}`
+	chmod(path, S_IRUSR, S_IRGRP, S_IROTH);`
+}
 
 In the example listed above, we can see how chmod() can be used to change permissions for the user, group and others. This example sets read permissions for all.
 
@@ -54,15 +54,18 @@ However if you can see that the mode parameter has 3 different permissions that 
 int main()
 {
 	const char *path;
-	*/inser code here*/
+	*/insert code here*/
 
 	chmod(path, S_IRUSR);
 }'
 
 If read, write, and execute permissions for the owner only is what you would like to do, then it would be the same code listed above but with S_IRWXU passed in as 'mode'. 
 
+`chmod(path, S_IRWXU)` will give permissions only to the owner. 
+
+
 You can find a list of permissions here depending on what you would need to change. Take the time to look through and see what specifically needs to be done!
-'
+
 
 [List of permissions](www.delorie.com/gnu/docs/glibc/libc_288.html)
 
