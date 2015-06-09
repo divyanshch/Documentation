@@ -34,15 +34,16 @@ The file permission bits that are changed are defined in `sys/stat.h`
 Many other permission bits can be used with this function, but it all varies on what specifically needs to be done. For example, setting read, write, exexecute permissions all have different permissions to be passed in. (S_IRUSR, S_IWUSR, S_IXUSR)
 
 ##Examples
-`#include <sys/stat.h>
 
-int main()
-{
-	const char *path;
-	*/Insert code here/*
+`#include <sys/stat.h>`
 
-	chmod(path, S_IRUSR, S_IRGRP, S_IROTH);
-}`
+`int main()`
+`{`
+	`const char *path;`
+	`*/Insert code here/*`
+
+	`chmod(path, S_IRUSR, S_IRGRP, S_IROTH);`
+`}`
 
 In the example listed above, we can see how chmod() can be used to change permissions for the user, group and others. This example sets read permissions for all.
 
