@@ -4,14 +4,16 @@ Documentation on the 'chmod()' system call which is used to change the mode and/
 
 ##Chmod
 
+[man page - chmod] (http://man7.org/linux/man-pages/man2/chmod.2.html)
+
 ##Inclusion
 
-'#include <sys/types.h>'
-'#include <sys/stat.h>'
+`#include <sys/types.h>`
+`#include <sys/stat.h>`
 
 ##Declaration
 
-'int chmod(const char *path, mode_t mode);'
+`int chmod(const char *path, mode_t mode);`
 
 ##Return Value
 
@@ -19,9 +21,11 @@ Upon successful completion that the file has been changed, then a 0 is returned.
 
 ##Description
 
-chmod() is used to change S_ISUID, S_ISGID, S_ISVTX, and other file permission bits that have been named by a pathname, 'path', to the corresponding bits in the 'mode' parameter. 
+###Parameters
+chmod() is used to change S_ISUID, S_ISGID, S_ISVTX, and other file permission bits that have been named by a pathname, `path`, to the corresponding bits in the `mode` parameter. 
 
-The file permission bits that are changed are defined in 'sys/stat.h' 
+###Permissions
+The file permission bits that are changed are defined in `sys/stat.h`
 
 1. S_ISUID - A set-user ID on an execute bit, on 04000 usually.
 2. S_ISGID - Similar to S_ISUID but on 02000 usually. Takes a new file group from parent directory.
@@ -30,7 +34,7 @@ The file permission bits that are changed are defined in 'sys/stat.h'
 Many other permission bits can be used with this function, but it all varies on what specifically needs to be done. For example, setting read, write, exexecute permissions all have different permissions to be passed in. (S_IRUSR, S_IWUSR, S_IXUSR)
 
 ##Examples
-'#include <sys/stat.h>
+`#include <sys/stat.h>
 
 int main()
 {
@@ -38,7 +42,7 @@ int main()
 	*/Insert code here/*
 
 	chmod(path, S_IRUSR, S_IRGRP, S_IROTH);
-}'
+}`
 
 In the example listed above, we can see how chmod() can be used to change permissions for the user, group and others. This example sets read permissions for all.
 
