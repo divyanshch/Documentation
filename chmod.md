@@ -35,6 +35,9 @@ Many other permission bits can be used with this function, but it all varies on 
 
 ##Examples
 
+
+
+```
 #include <sys/stat.h>
 
 int main()
@@ -44,12 +47,14 @@ int main()
 
 	chmod(path, S_IRUSR, S_IRGRP, S_IROTH);`
 }
+```
 
 In the example listed above, we can see how chmod() can be used to change permissions for the user, group and others. This example sets read permissions for all.
 
 However if you can see that the mode parameter has 3 different permissions that can be passed in. If you would like to only set read for the owner only,you only need to pass in S_IRUSR.
 
-'#include <sys/stat.h> 
+```
+#include <sys/stat.h> 
 
 int main()
 {
@@ -57,7 +62,8 @@ int main()
 	*/insert code here*/
 
 	chmod(path, S_IRUSR);
-}'
+}
+```
 
 If read, write, and execute permissions for the owner only is what you would like to do, then it would be the same code listed above but with S_IRWXU passed in as 'mode'. 
 
