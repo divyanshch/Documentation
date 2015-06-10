@@ -35,7 +35,7 @@ Many other permission bits can be used with this function, but it all varies on 
 
 ##Examples
 
-
+In the example below, we will see how chmod() can be used to change permissions for the user, group, and others.
 
 ```
 #include <sys/stat.h>
@@ -45,14 +45,15 @@ int main()
 	const char *path;`
 	*/Insert code here/*`
 
-	chmod(path, S_IRUSR, S_IRGRP, S_IROTH);`
+	chmod(path, S_IRUSR | S_IRGRP | S_IROTH);`
 }
 ```
 
-In the example listed above, we can see how chmod() can be used to change permissions for the user, group and others. This example sets read permissions for all.
+As you can see, 3 different permissions are passed in. `S_IRUSR` is the read permission for the owner. `S_IRGRP` is the read permission for the group, and `S_IROTH` is the read permission for others. The permissions are split up by the `|` command, so thus any one of these permissions can be passed through giving permissions to the owner, group, and others.
+If say for example, the `S_IRGRP` permission was removed, the above code would only give read permissions to the user and the others. Starting to get how this works? 
 
-However if you can see that the mode parameter has 3 different permissions that can be passed in. If you would like to only set read for the owner only,you only need to pass in S_IRUSR.
 
+Different permissions can be given for different purposes. A list of permissions can be give multiple types of permissions. In the example below, we can see an instance of how multiple permissions can be given with only one parameter passed through.
 ```
 #include <sys/stat.h> 
 
@@ -61,14 +62,15 @@ int main()
 	const char *path;
 	*/insert code here*/
 
-	chmod(path, S_IRUSR);
+	chmod(path, S_IRWXU);
 }
 ```
 
-If read, write, and execute permissions for the owner only is what you would like to do, then it would be the same code listed above but with S_IRWXU passed in as 'mode'. 
+If read, write, and execute permissions for the owner only is what you would like to do, then it would be the same code listed above but with S_IRWXU passed in. As you can see, the above code essentially gives all these permissions to the user only.  
 
-`chmod(path, S_IRWXU)` will give permissions only to the owner. 
+Within the same example, if instead of `S_IRWXU` being passed in, if `S_IXUSR` gives execute and search permissions to the owner. 
 
+So as you can see, `chmod()` provides to be very beneficial if permissions ever need to be given or taken away for any reason. 
 
 You can find a list of permissions here depending on what you would need to change. Take the time to look through and see what specifically needs to be done!
 
